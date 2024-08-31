@@ -2,12 +2,13 @@ import { FaExclamationCircle } from 'react-icons/fa';
 import useRecordingsList from '@/hooks/useRecordingsList';
 import { RecordingsListProps } from '@/types/recorder';
 import { AudioPlayer } from '../audio-player';
+import { RefObject } from 'react';
 
 export default function RecordingsList({ audio }: RecordingsListProps) {
-  const { recordings, deleteAudio } = useRecordingsList(audio);
+  const { recordings, deleteAudio, divRef } = useRecordingsList(audio);
 
   return recordings.length > 0 ? (
-    <div className="px-4 space-y-4 mt-auto pb-10">
+    <div className="px-4 space-y-4 mt-auto pb-4">
       {recordings.map((record) => (
         <div key={record.key}>
           <AudioPlayer
@@ -16,6 +17,7 @@ export default function RecordingsList({ audio }: RecordingsListProps) {
           />
         </div>
       ))}
+      <div ref={divRef as RefObject<HTMLDivElement>} />
     </div>
   ) : (
     <div className="h-full grid place-items-center">
