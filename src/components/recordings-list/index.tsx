@@ -1,6 +1,7 @@
-import { FaExclamationCircle, FaTrashAlt } from 'react-icons/fa';
-import { RecordingsListProps } from '@/types/recorder';
+import { FaExclamationCircle } from 'react-icons/fa';
 import useRecordingsList from '@/hooks/useRecordingsList';
+import { RecordingsListProps } from '@/types/recorder';
+import { AudioPlayer } from '../audio-player';
 
 export default function RecordingsList({ audio }: RecordingsListProps) {
   const { recordings, deleteAudio } = useRecordingsList(audio);
@@ -8,17 +9,11 @@ export default function RecordingsList({ audio }: RecordingsListProps) {
   return recordings.length > 0 ? (
     <div className="px-4 space-y-4 mt-auto pb-10">
       {recordings.map((record) => (
-        <div className="record" key={record.key}>
-          <audio controls src={record.audio} />
-          <div className="delete-button-container">
-            <button
-              className="delete-button"
-              title="Delete this audio"
-              onClick={() => deleteAudio(record.key)}
-            >
-              <FaTrashAlt />
-            </button>
-          </div>
+        <div key={record.key}>
+          <AudioPlayer
+            audio={record.audio}
+            deleteAudio={() => deleteAudio(record.key)}
+          />
         </div>
       ))}
     </div>

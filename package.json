@@ -1,5 +1,5 @@
 {
-  "name": "voice-recorder",
+  "name": "audio-recorder",
   "private": true,
   "version": "0.0.0",
   "type": "module",
