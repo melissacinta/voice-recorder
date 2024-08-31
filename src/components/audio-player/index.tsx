@@ -31,7 +31,7 @@ export const AudioPlayer = ({
   } = useAudioPlayer();
 
   return (
-    <div className="flex gap-4 items-center py-3 shadow rounded-lg px-3 flex-col border border-primary/20 max-w-[80%] ml-auto">
+    <div className="flex gap-4 items-center py-3 shadow rounded-lg px-3 flex-col border border-primary/20 md:max-w-[80%] ml-auto">
       <audio
         src={audio}
         ref={audioRef as RefObject<HTMLAudioElement>}
