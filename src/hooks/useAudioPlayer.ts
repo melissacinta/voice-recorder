@@ -50,7 +50,6 @@ const useAudioPlayer = () => {
       audioRef.current?.play();
       startAnimation();
     } else {
-      console.log({ isEnded });
       if (!isEnded) {
         audioRef.current?.pause();
       }
@@ -68,7 +67,6 @@ const useAudioPlayer = () => {
   }, [isPlaying, startAnimation, updateProgress, audioRef, isEnded]);
 
   const onLoadedMetadata = () => {
-    console.log({ audio: audioRef.current });
     const seconds = audioRef.current?.duration;
     if (audioRef.current) {
       if (
